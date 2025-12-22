@@ -18,7 +18,8 @@ const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signIn } = useAuth();
+  const [isSignUp, setIsSignUp] = useState(false);
+  const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,16 +32,30 @@ const AdminLogin = () => {
     }
 
     setLoading(true);
-    const { error } = await signIn(email, password);
     
-    if (error) {
-      toast.error('خطأ في البريد الإلكتروني أو كلمة المرور');
-      setLoading(false);
-      return;
+    if (isSignUp) {
+      const { error } = await signUp(email, password);
+      if (error) {
+        if (error.message.includes('already registered')) {
+          toast.error('هذا البريد مسجل مسبقاً، قم بتسجيل الدخول');
+        } else {
+          toast.error('حدث خطأ أثناء إنشاء الحساب');
+        }
+        setLoading(false);
+        return;
+      }
+      toast.success('تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول');
+      setIsSignUp(false);
+    } else {
+      const { error } = await signIn(email, password);
+      if (error) {
+        toast.error('خطأ في البريد الإلكتروني أو كلمة المرور');
+        setLoading(false);
+        return;
+      }
+      toast.success('تم تسجيل الدخول بنجاح');
+      navigate('/admin');
     }
-
-    toast.success('تم تسجيل الدخول بنجاح');
-    navigate('/admin');
     setLoading(false);
   };
 
@@ -52,7 +67,9 @@ const AdminLogin = () => {
             <Lock className="w-8 h-8 text-accent" />
           </div>
           <CardTitle className="text-2xl font-bold">لوحة التحكم</CardTitle>
-          <CardDescription>قم بتسجيل الدخول للوصول إلى لوحة التحكم</CardDescription>
+          <CardDescription>
+            {isSignUp ? 'أنشئ حساب مسؤول جديد' : 'قم بتسجيل الدخول للوصول إلى لوحة التحكم'}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -87,14 +104,23 @@ const AdminLogin = () => {
               </div>
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'جاري التحميل...' : 'تسجيل الدخول'}
+              {loading ? 'جاري التحميل...' : (isSignUp ? 'إنشاء حساب' : 'تسجيل الدخول')}
               <ArrowRight className="mr-2 h-4 w-4" />
             </Button>
           </form>
-          <div className="mt-4 text-center">
-            <a href="/" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-              العودة للموقع
-            </a>
+          <div className="mt-4 text-center space-y-2">
+            <button
+              type="button"
+              onClick={() => setIsSignUp(!isSignUp)}
+              className="text-sm text-accent hover:underline transition-colors"
+            >
+              {isSignUp ? 'لديك حساب؟ سجل الدخول' : 'ليس لديك حساب؟ أنشئ حساباً'}
+            </button>
+            <div>
+              <a href="/" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                العودة للموقع
+              </a>
+            </div>
           </div>
         </CardContent>
       </Card>
