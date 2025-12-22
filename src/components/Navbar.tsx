@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Code2, Settings } from "lucide-react";
 import ThemeToggle from './ThemeToggle';
+import { Button } from './ui/button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,12 +37,22 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
+            <Link to="/admin/login">
+              <Button variant="ghost" size="icon" className="hover:bg-accent/10">
+                <Settings className="h-5 w-5" />
+              </Button>
+            </Link>
             <ThemeToggle />
             <button className="btn-hero">ابدأ مشروعك</button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2 rtl:space-x-reverse">
+            <Link to="/admin/login">
+              <Button variant="ghost" size="icon" className="hover:bg-accent/10">
+                <Settings className="h-5 w-5" />
+              </Button>
+            </Link>
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
