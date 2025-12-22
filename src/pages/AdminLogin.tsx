@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -19,8 +19,15 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, user, isAdmin } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect if already logged in as admin
+  useEffect(() => {
+    if (user && isAdmin) {
+      navigate('/admin');
+    }
+  }, [user, isAdmin, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +53,7 @@ const AdminLogin = () => {
       }
       toast.success('تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول');
       setIsSignUp(false);
+      setLoading(false);
     } else {
       const { error } = await signIn(email, password);
       if (error) {
@@ -54,9 +62,8 @@ const AdminLogin = () => {
         return;
       }
       toast.success('تم تسجيل الدخول بنجاح');
-      navigate('/admin');
+      // Navigation will happen via useEffect when isAdmin becomes true
     }
-    setLoading(false);
   };
 
   return (
