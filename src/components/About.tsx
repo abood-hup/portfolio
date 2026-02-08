@@ -1,140 +1,140 @@
-import { Code2, Database, Smartphone, Globe, Award, Users, Download } from "lucide-react";
+import { Code2, Lightbulb, Target, Rocket, Download, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 
 const About = () => {
-  const skills = [
-    { name: "HTML", level: 98 },
-    { name: "CSS", level: 95 },
-    { name: "JavaScript", level: 92 },
-    { name: "Python", level: 90 },
-    { name: "C#", level: 88 },
-    { name: "Java", level: 85 },
-    { name: "PHP", level: 88 },
-    { name: "Flutter", level: 82 },
-    { name: "React", level: 87 },
-    { name: "MySQL", level: 85 },
-    { name: "Oracle APEX", level: 88 },
-    { name: "PL/SQL & Oracle Database", level: 85 },
-    { name: "RESTful APIs", level: 90 },
-    { name: "Git & Version Control", level: 87 },
-    { name: "Problem Solving", level: 93 },
-    { name: "System Analysis", level: 92 },
+  const highlights = [
+    {
+      icon: Code2,
+      title: "Full-Stack Developer",
+      description: "Proficient in both frontend and backend technologies"
+    },
+    {
+      icon: Lightbulb,
+      title: "Problem Solver",
+      description: "Turning complex challenges into elegant solutions"
+    },
+    {
+      icon: Target,
+      title: "User-Centered",
+      description: "Building systems that prioritize user experience"
+    },
+    {
+      icon: Rocket,
+      title: "Continuous Learner",
+      description: "Always exploring new technologies and best practices"
+    }
   ];
 
-  const achievements = [
-    { icon: Code2, title: "مشاريع مكتملة", value: "25+" },
-    { icon: Users, title: "عملاء راضون", value: "50+" },
-    { icon: Award, title: "سنوات خبرة", value: "3+" },
+  const specializations = [
+    "Custom Management Systems",
+    "E-commerce Platforms",
+    "Mobile Applications",
+    "AI-Powered Solutions",
+    "REST API Development",
+    "Database Design"
   ];
 
   return (
-    <section id="about" className="py-12 md:py-16 lg:py-20 bg-gradient-subtle">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-10 md:mb-12 lg:mb-16 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-primary mb-4 md:mb-6">
-              من أنا؟
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              مطور أنظمة شغوف بتحويل التحديات التقنية إلى حلول مبتكرة تساعد الأعمال على النمو والازدهار
-            </p>
-            <Button 
-              className="mt-6 md:mt-8 shadow-elegant hover:shadow-glow transition-all duration-300"
-              size="lg"
-              asChild
-            >
-              <a href="/resume.pdf" download="CV.pdf" className="flex items-center gap-2">
-                <Download className="h-5 w-5" />
-                <span>تحميل السيرة الذاتية</span>
-              </a>
-            </Button>
+    <section id="about" className="py-16 md:py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-card/10 to-background"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 mb-6">
+            <Code2 className="w-4 h-4 text-accent" />
+            <span className="text-sm font-medium text-accent">About Me</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-primary mb-4">
+            Who I Am
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            A passionate software developer dedicated to creating impactful digital solutions
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14 lg:mb-16">
-            {/* Story */}
-            <div className="space-y-4 md:space-y-6 animate-slide-up">
-              <h3 className="text-xl sm:text-2xl font-bold text-gradient-accent" dir="rtl">قصتي</h3>
-              <div className="space-y-4 text-muted-foreground" dir="rtl">
-                <p>
-                  بدأت رحلتي في عالم البرمجة منذ أكثر من 3 سنوات، مدفوعاً بشغف حقيقي لحل المشاكل وبناء حلول تقنية تحدث فرقاً في حياة الناس والأعمال.
-                </p>
-                <p>
-                  تخصصت في تطوير الأنظمة المخصصة وتطبيقات الجوال، وأؤمن بأن كل مشروع هو فرصة لتقديم شيء مبتكر وعملي يلبي احتياجات العميل بدقة.
-                </p>
-                <p>
-                  أهدف إلى أن أكون الشريك التقني المثالي للشركات والأفراد الذين يسعون لتطوير أعمالهم من خلال التكنولوجيا.
-                </p>
-              </div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content - Bio */}
+          <div className="space-y-6">
+            <div className="prose prose-lg text-muted-foreground">
+              <p className="text-lg leading-relaxed">
+                I'm a <span className="text-accent font-semibold">software developer</span> specializing in 
+                <span className="text-primary font-semibold"> web systems</span>, 
+                <span className="text-accent font-semibold"> mobile applications</span>, and 
+                <span className="text-primary font-semibold"> AI-powered solutions</span>.
+              </p>
+              <p className="leading-relaxed">
+                With a strong passion for building scalable, user-centered systems, I transform complex 
+                business requirements into elegant, efficient software solutions. I believe in writing 
+                clean code and creating intuitive interfaces that make technology accessible to everyone.
+              </p>
+              <p className="leading-relaxed">
+                As a continuous learner and problem solver, I stay updated with the latest technologies 
+                and best practices to deliver modern, high-quality solutions that help businesses grow 
+                and thrive in the digital age.
+              </p>
             </div>
 
-            {/* Skills */}
-            <div className="space-y-4 md:space-y-6 animate-slide-up">
-              <h3 className="text-xl sm:text-2xl font-bold text-gradient-accent">مهاراتي التقنية</h3>
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-accent">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="bg-gradient-accent h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+            {/* Specializations */}
+            <div className="pt-4">
+              <h3 className="text-lg font-bold text-foreground mb-4">What I Build:</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {specializations.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <Button 
+                size="lg"
+                className="bg-accent hover:bg-accent/90 shadow-accent"
+                asChild
+              >
+                <a href="/resume.pdf" download="Abdulwasea_CV.pdf" className="flex items-center gap-2">
+                  <Download className="w-5 h-5" />
+                  Download CV
+                </a>
+              </Button>
+              <Button 
+                variant="outline"
+                size="lg"
+                asChild
+              >
+                <a href="#contact">Get In Touch</a>
+              </Button>
+            </div>
           </div>
 
-          {/* Achievements */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 animate-fade-in">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="card-professional p-6 md:p-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-4">
-                  <achievement.icon className="h-8 w-8 text-accent" />
+          {/* Right Content - Highlights Grid */}
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            {highlights.map((item, index) => (
+              <div 
+                key={index}
+                className="group bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-5 md:p-6 hover:border-accent/30 hover:shadow-elegant transition-all duration-500"
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${
+                  index % 2 === 0 
+                    ? 'bg-gradient-to-br from-accent to-accent/80 shadow-accent' 
+                    : 'bg-gradient-to-br from-primary to-primary-glow shadow-elegant'
+                }`}>
+                  <item.icon className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gradient-primary mb-2">
-                  {achievement.value}
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {achievement.title}
-                </div>
+                <h3 className="font-bold text-card-foreground mb-2 group-hover:text-accent transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
               </div>
             ))}
-          </div>
-
-          {/* Education & Interests */}
-          <div className="mt-12 md:mt-14 lg:mt-16 grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
-            <div className="card-professional p-6 md:p-8 animate-slide-up">
-              <div className="flex items-center mb-4">
-                <Award className="h-5 w-5 md:h-6 md:w-6 text-accent mr-3" />
-                <h3 className="text-lg sm:text-xl font-bold" dir="rtl">التعليم والشهادات</h3>
-              </div>
-              <ul className="space-y-3 text-muted-foreground" dir="rtl">
-                <li>• بكالوريوس نظم معلومات حاسوبية</li>
-                <li>• شهادات في تطوير التطبيقات المتقدمة</li>
-                <li>• دورات متخصصة في تحليل الأنظمة</li>
-                <li>• ورش عمل في إدارة المشاريع التقنية</li>
-              </ul>
-            </div>
-
-            <div className="card-professional p-6 md:p-8 animate-slide-up">
-              <div className="flex items-center mb-4">
-                <Globe className="h-5 w-5 md:h-6 md:w-6 text-accent mr-3" />
-                <h3 className="text-lg sm:text-xl font-bold" dir="rtl">اهتماماتي</h3>
-              </div>
-              <ul className="space-y-3 text-muted-foreground" dir="rtl">
-                <li>• تطوير الأنظمة المخصصة</li>
-                <li>• إدارة مواقع الويب</li>
-                <li>• الذكاء الاصطناعي وتطبيقاته</li>
-                <li>• أمان المعلومات والبيانات</li>
-                <li>• مشاركة المعرفة التقنية</li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
