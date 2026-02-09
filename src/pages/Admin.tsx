@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { LogOut, Home, Settings, Briefcase, User, Phone, Layout } from 'lucide-react';
+import { LogOut, Home, Settings, Briefcase, User, Phone, Layout, BookOpen } from 'lucide-react';
 import { toast } from 'sonner';
 import AdminProjects from '@/components/admin/AdminProjects';
 import AdminServices from '@/components/admin/AdminServices';
@@ -11,6 +11,7 @@ import AdminHero from '@/components/admin/AdminHero';
 import AdminAbout from '@/components/admin/AdminAbout';
 import AdminContact from '@/components/admin/AdminContact';
 import AdminSettings from '@/components/admin/AdminSettings';
+import AdminBlog from '@/components/admin/AdminBlog';
 
 const Admin = () => {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -62,7 +63,7 @@ const Admin = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="hero" className="w-full">
-          <TabsList className="grid w-full grid-cols-6 mb-8">
+          <TabsList className="grid w-full grid-cols-7 mb-8">
             <TabsTrigger value="hero" className="flex items-center gap-2">
               <Layout className="h-4 w-4" />
               <span className="hidden sm:inline">الرئيسية</span>
@@ -78,6 +79,10 @@ const Admin = () => {
             <TabsTrigger value="projects" className="flex items-center gap-2">
               <Briefcase className="h-4 w-4" />
               <span className="hidden sm:inline">المشاريع</span>
+            </TabsTrigger>
+            <TabsTrigger value="blog" className="flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
+              <span className="hidden sm:inline">المدونة</span>
             </TabsTrigger>
             <TabsTrigger value="contact" className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
@@ -100,6 +105,9 @@ const Admin = () => {
           </TabsContent>
           <TabsContent value="projects">
             <AdminProjects />
+          </TabsContent>
+          <TabsContent value="blog">
+            <AdminBlog />
           </TabsContent>
           <TabsContent value="contact">
             <AdminContact />

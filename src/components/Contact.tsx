@@ -1,12 +1,15 @@
-import { Mail, Phone, MapPin, Send, MessageCircle, Github, Linkedin, Instagram, Facebook, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, Github, Linkedin, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { useLanguage } from "@/contexts/LanguageContext";
+import AnimatedSection from "./AnimatedSection";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,8 +33,8 @@ const Contact = () => {
     // Validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields",
+        title: language === 'ar' ? "خطأ في التحقق" : "Validation Error",
+        description: language === 'ar' ? "يرجى ملء جميع الحقول المطلوبة" : "Please fill in all required fields",
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -42,8 +45,8 @@ const Contact = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address",
+        title: language === 'ar' ? "بريد إلكتروني غير صالح" : "Invalid Email",
+        description: language === 'ar' ? "يرجى إدخال عنوان بريد إلكتروني صالح" : "Please enter a valid email address",
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -64,8 +67,8 @@ ${formData.message}`;
     window.open(whatsappURL, '_blank');
 
     toast({
-      title: "Redirecting to WhatsApp",
-      description: "Opening WhatsApp to send your message",
+      title: language === 'ar' ? "جارِ إعادة التوجيه إلى واتساب" : "Redirecting to WhatsApp",
+      description: language === 'ar' ? "فتح واتساب لإرسال رسالتك" : "Opening WhatsApp to send your message",
     });
 
     // Reset form
@@ -81,20 +84,20 @@ ${formData.message}`;
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t('contact.email'),
       value: "abdulwasea.alkhorasani@gmail.com",
       link: "mailto:abdulwasea.alkhorasani@gmail.com"
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: t('contact.phone'),
       value: "+967 739 266 110",
       link: "tel:+967739266110"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Sana'a, Yemen",
+      title: t('contact.location'),
+      value: language === 'ar' ? "صنعاء، اليمن" : "Sana'a, Yemen",
       link: "#"
     }
   ];
@@ -115,22 +118,22 @@ ${formData.message}`;
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <AnimatedSection className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 mb-6">
             <Mail className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-accent">Get In Touch</span>
+            <span className="text-sm font-medium text-accent">{t('contact.badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient-primary mb-4">
-            Contact Me
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            {t('contact.subtitle')}
           </p>
-        </div>
+        </AnimatedSection>
 
         <div className="grid lg:grid-cols-5 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Info - Left Side */}
-          <div className="lg:col-span-2 space-y-8">
+          <AnimatedSection delay={0.1} direction="left" className="lg:col-span-2 space-y-8">
             {/* Contact Cards */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
@@ -156,7 +159,7 @@ ${formData.message}`;
             <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-6">
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                 <MessageCircle className="w-5 h-5 text-accent" />
-                Quick Contact
+                {t('contact.quickContact')}
               </h3>
               <div className="space-y-3">
                 <a
@@ -166,21 +169,21 @@ ${formData.message}`;
                   className="flex items-center justify-center gap-2 w-full py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Chat on WhatsApp
+                  {t('contact.chatWhatsApp')}
                 </a>
                 <a
                   href="mailto:abdulwasea.alkhorasani@gmail.com"
                   className="flex items-center justify-center gap-2 w-full py-3 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 transition-colors font-medium"
                 >
                   <Mail className="w-5 h-5" />
-                  Send Email
+                  {t('contact.sendEmail')}
                 </a>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-6">
-              <h3 className="font-bold text-lg mb-4">Connect With Me</h3>
+              <h3 className="font-bold text-lg mb-4">{t('contact.connect')}</h3>
               <div className="flex flex-wrap gap-3">
                 {socialLinks.map((social, index) => (
                   <a
@@ -196,10 +199,10 @@ ${formData.message}`;
                 ))}
               </div>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Contact Form - Right Side */}
-          <div className="lg:col-span-3">
+          <AnimatedSection delay={0.2} direction="right" className="lg:col-span-3">
             <form 
               onSubmit={handleSubmit}
               className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 shadow-professional"
@@ -209,20 +212,20 @@ ${formData.message}`;
                   <Send className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">Send a Message</h3>
-                  <p className="text-sm text-muted-foreground">I'll get back to you as soon as possible</p>
+                  <h3 className="text-xl font-bold">{t('contact.sendMessage')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('contact.sendMessageDesc')}</p>
                 </div>
               </div>
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">{t('contact.fullName')} *</Label>
                     <Input
                       id="name"
                       name="name"
                       type="text"
-                      placeholder="Your name"
+                      placeholder={t('contact.namePlaceholder')}
                       value={formData.name}
                       onChange={handleInputChange}
                       className="bg-background/50"
@@ -230,12 +233,12 @@ ${formData.message}`;
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email">{t('contact.emailAddress')} *</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder={t('contact.emailPlaceholder')}
                       value={formData.email}
                       onChange={handleInputChange}
                       className="bg-background/50"
@@ -245,12 +248,12 @@ ${formData.message}`;
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
+                  <Label htmlFor="subject">{t('contact.subject')}</Label>
                   <Input
                     id="subject"
                     name="subject"
                     type="text"
-                    placeholder="What is this regarding?"
+                    placeholder={t('contact.subjectPlaceholder')}
                     value={formData.subject}
                     onChange={handleInputChange}
                     className="bg-background/50"
@@ -258,12 +261,12 @@ ${formData.message}`;
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
+                  <Label htmlFor="message">{t('contact.message')} *</Label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
-                    placeholder="Tell me about your project or inquiry..."
+                    placeholder={t('contact.messagePlaceholder')}
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-lg border border-input bg-background/50 focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
@@ -277,12 +280,12 @@ ${formData.message}`;
                   className="w-full bg-accent hover:bg-accent/90 shadow-accent group"
                   disabled={isSubmitting}
                 >
-                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className="w-5 h-5 me-2 group-hover:translate-x-1 transition-transform" />
+                  {isSubmitting ? t('contact.sending') : t('contact.sendButton')}
                 </Button>
               </div>
             </form>
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
