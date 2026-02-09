@@ -47,6 +47,69 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_posts: {
+        Row: {
+          author_name: string | null
+          category: string | null
+          content: string
+          content_ar: string | null
+          cover_image: string | null
+          created_at: string
+          excerpt: string | null
+          excerpt_ar: string | null
+          id: string
+          published: boolean | null
+          published_at: string | null
+          read_time: number | null
+          slug: string
+          sort_order: number | null
+          tags: string[] | null
+          title: string
+          title_ar: string | null
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string | null
+          category?: string | null
+          content: string
+          content_ar?: string | null
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          excerpt_ar?: string | null
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          read_time?: number | null
+          slug: string
+          sort_order?: number | null
+          tags?: string[] | null
+          title: string
+          title_ar?: string | null
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string | null
+          category?: string | null
+          content?: string
+          content_ar?: string | null
+          cover_image?: string | null
+          created_at?: string
+          excerpt?: string | null
+          excerpt_ar?: string | null
+          id?: string
+          published?: boolean | null
+          published_at?: string | null
+          read_time?: number | null
+          slug?: string
+          sort_order?: number | null
+          tags?: string[] | null
+          title?: string
+          title_ar?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contact_info: {
         Row: {
           address: string | null

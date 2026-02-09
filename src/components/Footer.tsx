@@ -1,22 +1,24 @@
 import { Code2, Github, Linkedin, Mail, Phone, MapPin, Heart, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t, language } = useLanguage();
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#portfolio" },
-    { name: "Contact", href: "#contact" },
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.skills'), href: "#skills" },
+    { name: t('nav.projects'), href: "#portfolio" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
   const services = [
-    "Web Development",
-    "Mobile Apps",
-    "AI Solutions",
-    "Systems Analysis",
-    "Database Design"
+    language === 'ar' ? "تطوير الويب" : "Web Development",
+    language === 'ar' ? "تطبيقات الهاتف" : "Mobile Apps",
+    language === 'ar' ? "حلول الذكاء الاصطناعي" : "AI Solutions",
+    language === 'ar' ? "تحليل النظم" : "Systems Analysis",
+    language === 'ar' ? "تصميم قواعد البيانات" : "Database Design"
   ];
 
   const socialLinks = [
@@ -42,7 +44,7 @@ const Footer = () => {
               <span className="text-2xl font-bold">Abdulwasea</span>
             </div>
             <p className="text-primary-foreground/70 leading-relaxed">
-              Software developer passionate about creating impactful digital solutions that help businesses grow and thrive.
+              {t('footer.description')}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
@@ -61,7 +63,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-accent">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-6 text-accent">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -79,7 +81,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-accent">Services</h3>
+            <h3 className="text-lg font-bold mb-6 text-accent">{t('footer.services')}</h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index} className="text-primary-foreground/70 text-sm flex items-center gap-2">
@@ -92,7 +94,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-6 text-accent">Contact</h3>
+            <h3 className="text-lg font-bold mb-6 text-accent">{t('footer.contact')}</h3>
             <div className="space-y-4">
               <a 
                 href="mailto:abdulwasea.alkhorasani@gmail.com"
@@ -110,7 +112,7 @@ const Footer = () => {
               </a>
               <div className="flex items-center gap-3 text-primary-foreground/70">
                 <MapPin className="h-4 w-4 text-accent" />
-                <span className="text-sm">Sana'a, Yemen</span>
+                <span className="text-sm">{language === 'ar' ? "صنعاء، اليمن" : "Sana'a, Yemen"}</span>
               </div>
             </div>
           </div>
@@ -121,12 +123,12 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-primary-foreground/70 text-sm">
               <span>© {currentYear} Abdulwasea Alkhorasani.</span>
-              <span className="hidden sm:inline">All rights reserved.</span>
+              <span className="hidden sm:inline">{t('footer.rights')}</span>
             </div>
             <div className="flex items-center gap-2 text-primary-foreground/70 text-sm">
-              <span>Made with</span>
+              <span>{t('footer.madeWith')}</span>
               <Heart className="w-4 h-4 text-accent fill-accent" />
-              <span>in Yemen</span>
+              <span>{t('footer.inYemen')}</span>
             </div>
           </div>
         </div>

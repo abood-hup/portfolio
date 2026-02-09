@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Code2, Settings } from "lucide-react";
 import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
 import { Button } from './ui/button';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +20,13 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#portfolio" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: t('nav.home'), href: "#home" },
+    { name: t('nav.about'), href: "#about" },
+    { name: t('nav.skills'), href: "#skills" },
+    { name: t('nav.projects'), href: "#portfolio" },
+    { name: t('nav.experience'), href: "#experience" },
+    { name: t('nav.blog'), href: "#blog" },
+    { name: t('nav.contact'), href: "#contact" },
   ];
 
   return (
@@ -55,18 +59,19 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
             <Link to="/admin/login">
               <Button variant="ghost" size="icon" className="hover:bg-accent/10">
                 <Settings className="h-5 w-5" />
               </Button>
             </Link>
+            <LanguageToggle />
             <ThemeToggle />
             <a 
               href="#contact"
               className="px-6 py-2.5 bg-accent text-accent-foreground font-semibold rounded-lg shadow-accent hover:shadow-elegant hover:scale-105 transition-all duration-300"
             >
-              Hire Me
+              {t('nav.hireMe')}
             </a>
           </div>
 
@@ -77,6 +82,7 @@ const Navbar = () => {
                 <Settings className="h-5 w-5" />
               </Button>
             </Link>
+            <LanguageToggle />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -108,7 +114,7 @@ const Navbar = () => {
                 className="block w-full text-center px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg"
                 onClick={() => setIsOpen(false)}
               >
-                Hire Me
+                {t('nav.hireMe')}
               </a>
             </div>
           </div>
