@@ -1,4 +1,4 @@
-import { Code2, Github, Linkedin, Mail, Phone, MapPin, Heart, ExternalLink } from "lucide-react";
+import { Code2, Github, Linkedin, Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -124,11 +124,6 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-primary-foreground/70 text-sm">
               <span>© {currentYear} Abdulwasea Alkhorasani.</span>
               <span className="hidden sm:inline">{t('footer.rights')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-primary-foreground/70 text-sm">
-              <span>{t('footer.madeWith')}</span>
-              <Heart className="w-4 h-4 text-accent fill-accent" />
-              <span>{t('footer.inYemen')}</span>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ const Admin = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="hero" className="w-full">
-          <TabsList className="grid w-full grid-cols-7 mb-8">
+          <TabsList className="grid w-full grid-cols-6 mb-8">
             <TabsTrigger value="hero" className="flex items-center gap-2">
               <Layout className="h-4 w-4" />
               <span className="hidden sm:inline">الرئيسية</span>
@@ -79,10 +79,6 @@ const Admin = () => {
             <TabsTrigger value="projects" className="flex items-center gap-2">
               <Briefcase className="h-4 w-4" />
               <span className="hidden sm:inline">المشاريع</span>
-            </TabsTrigger>
-            <TabsTrigger value="blog" className="flex items-center gap-2">
-              <BookOpen className="h-4 w-4" />
-              <span className="hidden sm:inline">المدونة</span>
             </TabsTrigger>
             <TabsTrigger value="contact" className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
@@ -105,9 +101,6 @@ const Admin = () => {
           </TabsContent>
           <TabsContent value="projects">
             <AdminProjects />
-          </TabsContent>
-          <TabsContent value="blog">
-            <AdminBlog />
           </TabsContent>
           <TabsContent value="contact">
             <AdminContact />

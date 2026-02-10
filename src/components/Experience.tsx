@@ -1,42 +1,49 @@
-import { GraduationCap, Briefcase, Calendar, MapPin, Award, CheckCircle } from "lucide-react";
+import { GraduationCap, Briefcase, Calendar, MapPin, Award, CheckCircle, BookOpen, Languages } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import AnimatedSection from "./AnimatedSection";
 
 const Experience = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isEn = language === 'en';
 
   const highlights = [
-    t('experience.education') === 'Education' ? 'Expert Systems Development' : 'تطوير النظم الخبيرة',
-    t('experience.education') === 'Education' ? 'AI-Powered Applications' : 'تطبيقات الذكاء الاصطناعي',
-    t('experience.education') === 'Education' ? 'Web & Mobile Development' : 'تطوير الويب والموبايل',
-    t('experience.education') === 'Education' ? 'Database Management' : 'إدارة قواعد البيانات'
+    isEn ? 'Expert Systems Development' : 'تطوير النظم الخبيرة',
+    isEn ? 'AI-Powered Applications' : 'تطبيقات الذكاء الاصطناعي',
+    isEn ? 'Web & Mobile Development' : 'تطوير الويب والموبايل',
+    isEn ? 'Database Management' : 'إدارة قواعد البيانات'
   ];
 
   const practicalExperience = [
     {
-      title: t('experience.education') === 'Education' ? 'Full-Stack Web Development' : 'تطوير ويب متكامل',
-      description: t('experience.education') === 'Education' 
-        ? 'Building complete web applications from frontend to backend with modern technologies' 
+      title: isEn ? 'Full-Stack Web Development' : 'تطوير ويب متكامل',
+      description: isEn
+        ? 'Building complete web applications from frontend to backend with modern technologies'
         : 'بناء تطبيقات ويب كاملة من الواجهة الأمامية إلى الخلفية بتقنيات حديثة'
     },
     {
-      title: t('experience.education') === 'Education' ? 'Mobile App Development' : 'تطوير تطبيقات الموبايل',
-      description: t('experience.education') === 'Education'
+      title: isEn ? 'Mobile App Development' : 'تطوير تطبيقات الموبايل',
+      description: isEn
         ? 'Creating cross-platform mobile applications using Flutter and native technologies'
         : 'إنشاء تطبيقات موبايل متعددة المنصات باستخدام Flutter والتقنيات الأصلية'
     },
     {
-      title: t('experience.education') === 'Education' ? 'AI & Expert Systems' : 'الذكاء الاصطناعي والنظم الخبيرة',
-      description: t('experience.education') === 'Education'
+      title: isEn ? 'AI & Expert Systems' : 'الذكاء الاصطناعي والنظم الخبيرة',
+      description: isEn
         ? 'Developing intelligent systems for medical diagnosis and smart recommendations'
         : 'تطوير أنظمة ذكية للتشخيص الطبي والتوصيات الذكية'
     },
     {
-      title: t('experience.education') === 'Education' ? 'Systems Analysis & Design' : 'تحليل وتصميم النظم',
-      description: t('experience.education') === 'Education'
+      title: isEn ? 'Systems Analysis & Design' : 'تحليل وتصميم النظم',
+      description: isEn
         ? 'Analyzing business requirements and designing efficient software solutions'
         : 'تحليل متطلبات العمل وتصميم حلول برمجية فعالة'
     }
+  ];
+
+  const courses = [
+    isEn ? 'English Language Courses – American French International Institute' : 'دورات لغة إنجليزية – المعهد الأمريكي الفرنسي الدولي',
+    isEn ? 'Database Management Courses – Online' : 'دورات إدارة قواعد البيانات – أونلاين',
+    isEn ? 'E-Commerce Courses – Online' : 'دورات التجارة الإلكترونية – أونلاين',
   ];
 
   return (
@@ -71,7 +78,7 @@ const Experience = () => {
               <h3 className="text-2xl font-bold text-gradient-accent">{t('experience.education')}</h3>
             </div>
 
-            <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 hover:border-accent/30 hover:shadow-elegant transition-all duration-500">
+            <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 hover:border-accent/30 hover:shadow-elegant transition-all duration-500 mb-6">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                   <Award className="w-6 h-6 text-accent" />
@@ -104,6 +111,40 @@ const Experience = () => {
                     <span className="text-muted-foreground">{highlight}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Courses & Certifications */}
+            <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:border-accent/30 hover:shadow-elegant transition-all duration-500 mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <BookOpen className="w-5 h-5 text-accent" />
+                <h4 className="font-bold text-card-foreground">{isEn ? 'Courses & Certifications' : 'الدورات والشهادات'}</h4>
+              </div>
+              <div className="space-y-2">
+                {courses.map((course, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-sm">
+                    <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                    <span className="text-muted-foreground">{course}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Languages */}
+            <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:border-accent/30 hover:shadow-elegant transition-all duration-500">
+              <div className="flex items-center gap-3 mb-4">
+                <Languages className="w-5 h-5 text-accent" />
+                <h4 className="font-bold text-card-foreground">{isEn ? 'Languages' : 'اللغات'}</h4>
+              </div>
+              <div className="flex gap-4">
+                <div className="px-4 py-2 bg-accent/10 rounded-lg text-sm">
+                  <span className="font-medium text-card-foreground">{isEn ? 'Arabic' : 'العربية'}</span>
+                  <span className="text-muted-foreground"> – {isEn ? 'Native' : 'لغة أم'}</span>
+                </div>
+                <div className="px-4 py-2 bg-accent/10 rounded-lg text-sm">
+                  <span className="font-medium text-card-foreground">{isEn ? 'English' : 'الإنجليزية'}</span>
+                  <span className="text-muted-foreground"> – {isEn ? 'Good' : 'جيد'}</span>
+                </div>
               </div>
             </div>
           </AnimatedSection>

@@ -51,8 +51,8 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-r from-accent via-primary to-accent rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-700"></div>
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 mx-auto rounded-full overflow-hidden shadow-elegant border-4 border-card/50 backdrop-blur-sm">
+            <div className="absolute -inset-5 md:-inset-7 bg-gradient-to-r from-accent via-primary to-accent rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-700"></div>
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden shadow-elegant border-4 border-card/50 backdrop-blur-sm">
               <img 
                 src={profileImage} 
                 alt="Abdulwasea Alkhorasani" 
