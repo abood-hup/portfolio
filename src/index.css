@@ -61,52 +61,52 @@
   }
 
   .dark {
-    /* Deep Calm Dark - Navy Blue Base */
-    --background: 220 35% 8%;
-    --foreground: 210 15% 92%;
+    /* Deep Calm Dark - Soft Charcoal Base */
+    --background: 220 20% 10%;
+    --foreground: 220 10% 88%;
     
-    /* Soft Teal for Dark Mode */
-    --primary: 180 50% 55%;
-    --primary-foreground: 220 35% 8%;
-    --primary-glow: 180 45% 65%;
+    /* Muted Teal Primary */
+    --primary: 195 30% 50%;
+    --primary-foreground: 220 20% 10%;
+    --primary-glow: 195 25% 58%;
     
-    /* Calm Cyan Accent */
-    --accent: 175 45% 50%;
-    --accent-foreground: 220 35% 8%;
-    --accent-soft: 175 30% 15%;
+    /* Gentle Sage Accent */
+    --accent: 170 25% 45%;
+    --accent-foreground: 220 20% 10%;
+    --accent-soft: 170 15% 16%;
     
-    /* Soft Dark Grays */
-    --secondary: 220 25% 14%;
-    --secondary-foreground: 210 15% 92%;
+    /* Warm Dark Grays */
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 10% 85%;
     
-    --muted: 220 25% 12%;
-    --muted-foreground: 210 12% 60%;
+    --muted: 220 15% 13%;
+    --muted-foreground: 220 8% 55%;
     
     /* Card System */
-    --card: 220 30% 10%;
-    --card-foreground: 210 15% 92%;
+    --card: 220 18% 12%;
+    --card-foreground: 220 10% 88%;
     
-    --popover: 220 30% 10%;
-    --popover-foreground: 210 15% 92%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 220 10% 88%;
     
     /* Interactive Elements */
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 175 45% 50%;
+    --border: 220 12% 20%;
+    --input: 220 12% 20%;
+    --ring: 170 25% 45%;
     
     /* Status Colors */
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 0 0% 95%;
     
     /* Dark Mode Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 35% 8%), hsl(220 30% 12%));
-    --gradient-accent: linear-gradient(135deg, hsl(175 45% 50%), hsl(180 40% 60%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220 35% 8%), hsl(220 30% 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 10%), hsl(220 18% 14%));
+    --gradient-accent: linear-gradient(135deg, hsl(170 25% 45%), hsl(175 22% 52%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 20% 10%), hsl(220 18% 12%));
     
     /* Softer Dark Shadows */
-    --shadow-professional: 0 4px 25px -5px hsl(0 0% 0% / 0.25);
-    --shadow-accent: 0 8px 32px -8px hsl(175 45% 50% / 0.25);
-    --shadow-elegant: 0 20px 40px -10px hsl(0 0% 0% / 0.35);
+    --shadow-professional: 0 4px 25px -5px hsl(0 0% 0% / 0.2);
+    --shadow-accent: 0 8px 32px -8px hsl(170 25% 45% / 0.15);
+    --shadow-elegant: 0 20px 40px -10px hsl(0 0% 0% / 0.3);
   }
 }
 
