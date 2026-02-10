@@ -52,7 +52,7 @@ const Hero = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="absolute -inset-5 md:-inset-7 bg-gradient-to-r from-accent via-primary to-accent rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-all duration-700"></div>
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden shadow-elegant border-4 border-card/50 backdrop-blur-sm">
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden shadow-elegant border-4 border-card/50 backdrop-blur-sm">
               <img 
                 src={profileImage} 
                 alt="Abdulwasea Alkhorasani" 
